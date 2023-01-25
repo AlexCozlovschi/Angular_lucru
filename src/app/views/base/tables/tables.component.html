@@ -1,0 +1,59 @@
+<c-row ngPreserveWhitespaces>
+
+
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong> Table</strong>
+      </c-card-header>
+      <c-card-body>
+
+        <ng-multiselect-dropdown
+          [placeholder]="'Select Items'"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          [(ngModel)]="selectedItems"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+        >
+        </ng-multiselect-dropdown>
+        <br>
+
+        <table cTable>
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Intestazione</th>
+            <th scope="col">Azienda</th>
+            <th scope="col">Bank</th>
+            <th scope="col">IBAN</th>
+            <th scope="col">Alias</th>
+            <th scope="col">Divisa</th>
+          </tr>
+          </thead>
+
+          <tbody *ngFor="let name of data">
+          <tr>
+            <td colspan="7" (click)="toggleAccordion(name) ">{{name}}</td>
+          </tr>
+          <ng-container *ngFor="let item of Data_list">
+            <tr *ngIf="activeAccordion.includes(name) && item.get('Name') === name ">
+
+              <td>
+                <fa-icon [icon]="faStar" [ngStyle]="{ color: 'gold' }"></fa-icon>
+              </td>
+              <td>{{ item.get("intestazione") }}</td>
+              <td>{{ item.get("azienda") }}</td>
+              <td>{{ item.get("abi_code") }}</td>
+              <td>{{ item.get("iban") }}</td>
+              <td>{{ item.get("alias") }}</td>
+              <td>{{ item.get("devisa") }}</td>
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
