@@ -11,6 +11,7 @@ import {DataprocesingService} from "../../../services/dataprocesing.service";
 })
 export class TablesComponent implements OnInit {
   data: string[];
+  items: string[] = ['A.C. FILATURA _23', 'A.C. FILATURA NORDMSK', 'A.C. FILATURA2 NORDMSK'];
   datas = new DataprocesingService();
   dropdownTipology = [{item_id: 1, item_text: "test"}];
   Data_list: Map<any, any>[];
@@ -25,7 +26,9 @@ export class TablesComponent implements OnInit {
     {item_id: 3, item_text: 'Conti Anticipi Esteri'},
     {item_id: 4, item_text: 'Libretti di risparmio'},
     {item_id: 5, item_text: 'Finanziamenti'}];
-  selectedItems = [];
+  selectedItems = [{item_id: 1, item_text: 'A.C. FILATURA _23'},
+    {item_id: 2, item_text: "A.C. FILATURA NORDMSK"},
+    {item_id: 3, item_text: "A.C. FILATURA2 NORDMSK"},];
   dropdownSettings = {
     singleSelection: false,
     idField: 'item_id',
@@ -43,19 +46,16 @@ export class TablesComponent implements OnInit {
   }
 
 
-  onItemSelect(item: any) {
-    this.datas.setData(this.selectedTipology);
-    console.log(item);
+  itemChange() {
+    this.datas.setItem(this.selectedItems);
+    console.log(this.selectedItems)
+    this.items = this.datas.items;
     this.ngOnInit();
-  }
 
-  onSelectAll(items: any) {
-    console.log(this.selectedTipology);
-    this.datas.setData(this.selectedTipology);
-    this.ngOnInit();
   }
 
   activeAccordion: any;
+
 
   toggleAccordion(name: any) {
     if (this.activeAccordion.includes(name)) {
@@ -66,17 +66,21 @@ export class TablesComponent implements OnInit {
   }
 
   constructor() {
+
     this.activeAccordion = ["Conti Correnti"];
     this.dropdownList = this.datas.dropdownList;
     this.Data_list = this.datas.Data_List;
     this.data = this.datas.data;
+
     this.dropdownTipology = this.datas.dropdownTipology;
   }
 
   ngOnInit(): void {
     this.activeAccordion = ["Conti Correnti"];
 
+    console.log(this.items)
     this.dropdownList = this.datas.dropdownList;
+    this.selectedItems = this.dropdownList;
     this.Data_list = this.datas.Data_List;
     this.data = this.datas.data;
     this.dropdownTipology = this.datas.dropdownTipology;

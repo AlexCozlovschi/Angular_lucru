@@ -6,6 +6,13 @@ import {routerLinkWithHref} from "@angular/core/schematics/migrations/router-lin
   providedIn: 'root'
 })
 export class DataprocesingService {
+  get items(): string[] {
+    return this._items;
+  }
+
+  set items(value: string[]) {
+    this._items = value;
+  }
 
   private _Data_List: Map<any, any>[];
 
@@ -15,6 +22,7 @@ export class DataprocesingService {
   private _Intestazione: string[];
   private _Azienda: string[];
   private _data: string[]
+  private _items: string[] = ['A.C. FILATURA _23', 'A.C. FILATURA NORDMSK', 'A.C. FILATURA2 NORDMSK'];
 
   check(array: Map<any, any>[], iban: string, type: string): boolean {
 
@@ -122,6 +130,13 @@ export class DataprocesingService {
     }
   }
 
+  setItem(value: { item_id: number; item_text: string }[]) {
+    this._items = [];
+    for (const value1 of value) {
+      this._items.push(value1.item_text)
+    }
+  }
+
   constructor() {
     this._Data_List = [];
     this._Iban = [];
@@ -129,6 +144,7 @@ export class DataprocesingService {
     this._Azienda = [];
     this._dropdownList = [];
     this._data = [];
+    this._items = [];
     this._dropdownTipology = [
       {item_id: 1, item_text: 'Conti Correnti'},
       {item_id: 2, item_text: 'Portafoglio Incassi'},
@@ -136,7 +152,7 @@ export class DataprocesingService {
       {item_id: 4, item_text: 'Libretti di risparmio'},
       {item_id: 5, item_text: 'Finanziamenti'}];
     this.get_datas_from_json()
-    console.log(this._Intestazione)
+    //console.log(this._Intestazione)
     this.dropdownListSet(this._Intestazione);
     this.setData(this._dropdownTipology);
   }

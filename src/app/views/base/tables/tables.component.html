@@ -13,8 +13,10 @@
           [settings]="dropdownSettings"
           [data]="dropdownList"
           [(ngModel)]="selectedItems"
-          (onSelect)="onItemSelect($event)"
-          (onSelectAll)="onSelectAll($event)"
+          (onSelect)="itemChange()"
+          (onSelectAll)="itemChange()"
+          (onDeSelectAll)="itemChange()"
+          (onDeSelect)="itemChange()"
 
         >
         </ng-multiselect-dropdown>
@@ -52,7 +54,8 @@
               {{name}}</td>
           </tr>
           <ng-container *ngFor="let item of Data_list">
-            <tr *ngIf="activeAccordion.includes(name) && item.get('Name') === name ">
+            <tr
+              *ngIf="activeAccordion.includes(name) && item.get('Name') === name  && items.includes(item.get('intestazione'))">
               <td>
                 <fa-icon [icon]="faStar" [ngStyle]="{ color: 'gold' }"></fa-icon>
               </td>
