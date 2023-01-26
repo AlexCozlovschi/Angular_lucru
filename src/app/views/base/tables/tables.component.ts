@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {faStar} from '@fortawesome/free-solid-svg-icons';
-
+import {faChevronDown} from "@fortawesome/free-solid-svg-icons";
 
 import {DataprocesingService} from "../../../services/dataprocesing.service";
 
@@ -9,15 +9,22 @@ import {DataprocesingService} from "../../../services/dataprocesing.service";
   templateUrl: './tables.component.html',
   styleUrls: ['./tables.component.scss']
 })
-export class TablesComponent {
-  data: string[] = ["Conti Correnti", "_Portafoglio", "_Anticipi", "_Libretti", "_Finanziamenti"];
-
+export class TablesComponent implements OnInit {
+  data: string[];
+  datas = new DataprocesingService();
+  dropdownTipology = [{item_id: 1, item_text: "test"}];
   Data_list: Map<any, any>[];
-
+  faChec = faChevronDown;
   faStar = faStar;
 
   dropdownList = [{item_id: 1, item_text: "test"}];
 
+  selectedTipology = [
+    {item_id: 1, item_text: 'Conti Correnti'},
+    {item_id: 2, item_text: 'Portafoglio Incassi'},
+    {item_id: 3, item_text: 'Conti Anticipi Esteri'},
+    {item_id: 4, item_text: 'Libretti di risparmio'},
+    {item_id: 5, item_text: 'Finanziamenti'}];
   selectedItems = [];
   dropdownSettings = {
     singleSelection: false,
@@ -25,16 +32,27 @@ export class TablesComponent {
     textField: 'item_text',
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
-    itemsShowLimit: 3,
+    itemsShowLimit: 10,
     allowSearchFilter: true
   };
 
+
+  tipologiChange() {
+    this.datas.setData(this.selectedTipology);
+    this.ngOnInit();
+  }
+
+
   onItemSelect(item: any) {
+    this.datas.setData(this.selectedTipology);
     console.log(item);
+    this.ngOnInit();
   }
 
   onSelectAll(items: any) {
-    console.log(items);
+    console.log(this.selectedTipology);
+    this.datas.setData(this.selectedTipology);
+    this.ngOnInit();
   }
 
   activeAccordion: any;
@@ -48,13 +66,20 @@ export class TablesComponent {
   }
 
   constructor() {
-    this.activeAccordion = [];
+    this.activeAccordion = ["Conti Correnti"];
+    this.dropdownList = this.datas.dropdownList;
+    this.Data_list = this.datas.Data_List;
+    this.data = this.datas.data;
+    this.dropdownTipology = this.datas.dropdownTipology;
+  }
 
-    let datas: any;
-    datas = new DataprocesingService();
-    this.dropdownList = datas.dropdownList;
-    this.Data_list = datas.Data_List;
+  ngOnInit(): void {
+    this.activeAccordion = ["Conti Correnti"];
 
+    this.dropdownList = this.datas.dropdownList;
+    this.Data_list = this.datas.Data_List;
+    this.data = this.datas.data;
+    this.dropdownTipology = this.datas.dropdownTipology;
 
   }
 

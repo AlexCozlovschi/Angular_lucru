@@ -15,6 +15,19 @@
           [(ngModel)]="selectedItems"
           (onSelect)="onItemSelect($event)"
           (onSelectAll)="onSelectAll($event)"
+
+        >
+        </ng-multiselect-dropdown>
+        <br>
+        <ng-multiselect-dropdown
+          [placeholder]="'Select Intestazione'"
+          [settings]="dropdownSettings"
+          [data]="dropdownTipology"
+          [(ngModel)]="selectedTipology"
+          (onSelect)="tipologiChange( )"
+          (onSelectAll)="tipologiChange( )"
+          (onDeSelect)="tipologiChange()"
+          (onDeSelectAll)="tipologiChange()"
         >
         </ng-multiselect-dropdown>
         <br>
@@ -22,7 +35,7 @@
         <table cTable>
           <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col"></th>
             <th scope="col">Intestazione</th>
             <th scope="col">Azienda</th>
             <th scope="col">Bank</th>
@@ -34,11 +47,12 @@
 
           <tbody *ngFor="let name of data">
           <tr>
-            <td colspan="7" (click)="toggleAccordion(name) ">{{name}}</td>
+            <td colspan="7" (click)="toggleAccordion(name) ">
+              <fa-icon [icon]="faChec"></fa-icon>
+              {{name}}</td>
           </tr>
           <ng-container *ngFor="let item of Data_list">
             <tr *ngIf="activeAccordion.includes(name) && item.get('Name') === name ">
-
               <td>
                 <fa-icon [icon]="faStar" [ngStyle]="{ color: 'gold' }"></fa-icon>
               </td>

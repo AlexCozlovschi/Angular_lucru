@@ -375,7 +375,7 @@
                   "alias": null,
                   "is_passive_bank": false,
                   "currency": null,
-                  "account_naming": "A.C. FILATURA NORDMSK",
+                  "account_naming": "A.C. FILATURA NORDMSK2",
                   "is_default_account": null,
                   "tax_code": "00107140055"
                 }
@@ -414,7 +414,7 @@
                   "alias": null,
                   "is_passive_bank": false,
                   "currency": null,
-                  "account_naming": "A.C. FILATURA NORDMSK",
+                  "account_naming": "A.C. FILATURA2 NORDMSK",
                   "is_default_account": null,
                   "tax_code": "00107140055"
                 }
@@ -439,7 +439,7 @@
                   "alias": null,
                   "is_passive_bank": false,
                   "currency": null,
-                  "account_naming": "A.C. FILATURA NORDMSK",
+                  "account_naming": "A.C. FILATURA 3NORDMSK",
                   "is_default_account": null,
                   "tax_code": "00107140055"
                 }
@@ -478,7 +478,7 @@
                   "alias": null,
                   "is_passive_bank": false,
                   "currency": null,
-                  "account_naming": "A.C. FILATURA NORDMSK",
+                  "account_naming": "A.C. FILATURA2 NORDMSK",
                   "is_default_account": null,
                   "tax_code": "00107140055"
                 }
@@ -503,7 +503,7 @@
                   "alias": null,
                   "is_passive_bank": false,
                   "currency": null,
-                  "account_naming": "A.C. FILATURA NORDMSK",
+                  "account_naming": "A.C. FILATURA3 NORDMSK",
                   "is_default_account": null,
                   "tax_code": "00107140055"
                 }
