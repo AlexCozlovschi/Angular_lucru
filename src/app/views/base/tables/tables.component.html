@@ -30,10 +30,10 @@
               [settings]="dropdownSettings"
               [data]="dropdownTipology"
               [(ngModel)]="selectedTipology"
-              (onSelect)="tipologiChange( )"
-              (onSelectAll)="tipologiChange( )"
-              (onDeSelect)="tipologiChange()"
-              (onDeSelectAll)="tipologiChange()"
+              (onSelect)="tipologiFilter( )"
+              (onSelectAll)="tipologiFilter( )"
+              (onDeSelect)="tipologiFilter()"
+              (onDeSelectAll)="tipologiFilter()"
             >
             </ng-multiselect-dropdown>
 
@@ -41,24 +41,16 @@
         </c-row>
         <br>
         <c-row>
-          <c-col xs="6">
+          <c-col xs="12">
             <input aria-label="default input example"
                    cFormControl
-                   placeholder="Iban"
+                   placeholder="Iban or Alias"
                    type="text"
-                   (input)="ibanFilter($event)"
-            />
-          </c-col>
-          <c-col xs="6">
-            <input aria-label="default input example"
-                   cFormControl
-                   placeholder="Alias"
-                   type="text"
-
-                   (input)="aliasFilter($event)"
+                   (input)="textFilter($event)"
             />
           </c-col>
         </c-row>
+        <br>
         <table cTable>
           <thead>
           <tr>
@@ -82,7 +74,8 @@
 
             <tr
               *ngIf="activeAccordion.includes(name) && item.get('Name') === name
-               && items.includes(item.get('intestazione')) && item.get('iban').includes(iban)">
+               && items.includes(item.get('intestazione')) && (item.get('iban').includes(iban_alias)
+               || item.get('alias').includes(iban_alias))">
               <td>
                 <svg cIcon class="me-2 " style="color:gold" name="cil-star"></svg>
               </td>

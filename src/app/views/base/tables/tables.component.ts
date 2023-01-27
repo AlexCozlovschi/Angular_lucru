@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 import {faChevronDown} from "@fortawesome/free-solid-svg-icons";
+import {FilterService} from "../../../services/filter.service";
 
 import {DataprocesingService} from "../../../services/dataprocesing.service";
 
@@ -10,18 +11,11 @@ import {DataprocesingService} from "../../../services/dataprocesing.service";
   styleUrls: ['./tables.component.scss']
 })
 export class TablesComponent implements OnInit {
-  data: string[];
-  alias: string = "";
-  iban: string = "";
-  items: string[] = ['A.C. FILATURA _23', 'A.C. FILATURA NORDMSK', 'A.C. FILATURA2 NORDMSK'];
   datas = new DataprocesingService();
+  data: string[] = this.datas.data;
+  Data_list: Map<any, any>[] = this.datas.Data_List;
   dropdownTipology = [{item_id: 1, item_text: "test"}];
-  Data_list: Map<any, any>[];
-  faChec = faChevronDown;
-  faStar = faStar;
-
   dropdownList = [{item_id: 1, item_text: "test"}];
-
   selectedTipology = [
     {item_id: 1, item_text: 'Conti Correnti'},
     {item_id: 2, item_text: 'Portafoglio Incassi'},
@@ -31,6 +25,10 @@ export class TablesComponent implements OnInit {
   selectedItems = [{item_id: 1, item_text: 'A.C. FILATURA _23'},
     {item_id: 2, item_text: "A.C. FILATURA NORDMSK"},
     {item_id: 3, item_text: "A.C. FILATURA2 NORDMSK"},];
+  items: string[] = ['A.C. FILATURA _23', 'A.C. FILATURA NORDMSK', 'A.C. FILATURA2 NORDMSK'];
+  alias: string = "";
+  iban_alias: string = "";
+
   dropdownSettings = {
     singleSelection: false,
     idField: 'item_id',
@@ -41,8 +39,10 @@ export class TablesComponent implements OnInit {
     allowSearchFilter: true
   };
 
+  faChec = faChevronDown;
+  faStar = faStar;
 
-  tipologiChange() {
+  tipologiFilter() {
     this.datas.setData(this.selectedTipology);
     this.ngOnInit();
   }
@@ -56,22 +56,14 @@ export class TablesComponent implements OnInit {
 
   }
 
-  aliasFilter(text: any) {
-    if (text.data == null) {
-      this.alias = this.alias.slice(0, -1);
-    } else {
-      this.alias += text.data
-    }
-    console.log(this.alias);
-  }
 
-  ibanFilter(text: any) {
+  textFilter(text: any) {
     if (text.data == null) {
-      this.iban = this.iban.slice(0, -1);
+      this.iban_alias = this.iban_alias.slice(0, -1);
     } else {
-      this.iban += text.data
+      this.iban_alias += text.data
     }
-    console.log(this.iban);
+    console.log(this.iban_alias);
   }
 
 
@@ -88,17 +80,11 @@ export class TablesComponent implements OnInit {
 
   constructor() {
 
-    this.activeAccordion = ["Conti Correnti"];
-    this.dropdownList = this.datas.dropdownList;
-    this.Data_list = this.datas.Data_List;
-    this.data = this.datas.data;
-
-    this.dropdownTipology = this.datas.dropdownTipology;
   }
 
   ngOnInit(): void {
-    this.activeAccordion = ["Conti Correnti"];
-
+    this.activeAccordion = ["Conti Correnti", "Portafoglio Incassi", " Libretti di risparmio",
+      "Conti Anticipi Esteri", "Conti Anticipi Esteri", " Finanziamenti"];
     console.log(this.items)
     this.dropdownList = this.datas.dropdownList;
     this.selectedItems = this.dropdownList;
