@@ -15,7 +15,6 @@ export class DataprocesingService {
   }
 
   private _Data_List: Map<any, any>[];
-
   private _dropdownList: { item_id: number; item_text: string }[];
   private _dropdownTipology: { item_id: number; item_text: string }[];
   private _Iban: string[];

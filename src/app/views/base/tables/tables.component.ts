@@ -11,6 +11,8 @@ import {DataprocesingService} from "../../../services/dataprocesing.service";
 })
 export class TablesComponent implements OnInit {
   data: string[];
+  alias: string = "";
+  iban: string = "";
   items: string[] = ['A.C. FILATURA _23', 'A.C. FILATURA NORDMSK', 'A.C. FILATURA2 NORDMSK'];
   datas = new DataprocesingService();
   dropdownTipology = [{item_id: 1, item_text: "test"}];
@@ -53,6 +55,25 @@ export class TablesComponent implements OnInit {
     this.ngOnInit();
 
   }
+
+  aliasFilter(text: any) {
+    if (text.data == null) {
+      this.alias = this.alias.slice(0, -1);
+    } else {
+      this.alias += text.data
+    }
+    console.log(this.alias);
+  }
+
+  ibanFilter(text: any) {
+    if (text.data == null) {
+      this.iban = this.iban.slice(0, -1);
+    } else {
+      this.iban += text.data
+    }
+    console.log(this.iban);
+  }
+
 
   activeAccordion: any;
 

@@ -7,33 +7,58 @@
         <strong> Table</strong>
       </c-card-header>
       <c-card-body>
+        <c-row>
+          <c-col xs="6">
 
-        <ng-multiselect-dropdown
-          [placeholder]="'Select Items'"
-          [settings]="dropdownSettings"
-          [data]="dropdownList"
-          [(ngModel)]="selectedItems"
-          (onSelect)="itemChange()"
-          (onSelectAll)="itemChange()"
-          (onDeSelectAll)="itemChange()"
-          (onDeSelect)="itemChange()"
+            <ng-multiselect-dropdown
+              [placeholder]="'Select Items'"
+              [settings]="dropdownSettings"
+              [data]="dropdownList"
+              [(ngModel)]="selectedItems"
+              (onSelect)="itemChange()"
+              (onSelectAll)="itemChange()"
+              (onDeSelectAll)="itemChange()"
+              (onDeSelect)="itemChange()"
 
-        >
-        </ng-multiselect-dropdown>
+            >
+            </ng-multiselect-dropdown>
+          </c-col>
+          <c-col xs="6">
+
+            <ng-multiselect-dropdown
+              [placeholder]="'Select Intestazione'"
+              [settings]="dropdownSettings"
+              [data]="dropdownTipology"
+              [(ngModel)]="selectedTipology"
+              (onSelect)="tipologiChange( )"
+              (onSelectAll)="tipologiChange( )"
+              (onDeSelect)="tipologiChange()"
+              (onDeSelectAll)="tipologiChange()"
+            >
+            </ng-multiselect-dropdown>
+
+          </c-col>
+        </c-row>
         <br>
-        <ng-multiselect-dropdown
-          [placeholder]="'Select Intestazione'"
-          [settings]="dropdownSettings"
-          [data]="dropdownTipology"
-          [(ngModel)]="selectedTipology"
-          (onSelect)="tipologiChange( )"
-          (onSelectAll)="tipologiChange( )"
-          (onDeSelect)="tipologiChange()"
-          (onDeSelectAll)="tipologiChange()"
-        >
-        </ng-multiselect-dropdown>
-        <br>
+        <c-row>
+          <c-col xs="6">
+            <input aria-label="default input example"
+                   cFormControl
+                   placeholder="Iban"
+                   type="text"
+                   (input)="ibanFilter($event)"
+            />
+          </c-col>
+          <c-col xs="6">
+            <input aria-label="default input example"
+                   cFormControl
+                   placeholder="Alias"
+                   type="text"
 
+                   (input)="aliasFilter($event)"
+            />
+          </c-col>
+        </c-row>
         <table cTable>
           <thead>
           <tr>
@@ -54,10 +79,12 @@
               {{name}}</td>
           </tr>
           <ng-container *ngFor="let item of Data_list">
+
             <tr
-              *ngIf="activeAccordion.includes(name) && item.get('Name') === name  && items.includes(item.get('intestazione'))">
+              *ngIf="activeAccordion.includes(name) && item.get('Name') === name
+               && items.includes(item.get('intestazione')) && item.get('iban').includes(iban)">
               <td>
-                <fa-icon [icon]="faStar" [ngStyle]="{ color: 'gold' }"></fa-icon>
+                <svg cIcon class="me-2 " style="color:gold" name="cil-star"></svg>
               </td>
               <td>{{ item.get("intestazione") }}</td>
               <td>{{ item.get("azienda") }}</td>
