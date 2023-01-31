@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 import {faChevronDown} from "@fortawesome/free-solid-svg-icons";
 import {FilterService} from "../../../services/filter.service";
+import {JsonDService} from "../../../services/json-d.service";
 
 import {DataprocesingService} from "../../../services/dataprocesing.service";
 
@@ -25,7 +26,7 @@ export class TablesComponent implements OnInit {
   selectedItems = [{item_id: 1, item_text: 'A.C. FILATURA _23'},
     {item_id: 2, item_text: "A.C. FILATURA NORDMSK"},
     {item_id: 3, item_text: "A.C. FILATURA2 NORDMSK"},];
-  items: string[] = ['A.C. FILATURA _23', 'A.C. FILATURA NORDMSK', 'A.C. FILATURA2 NORDMSK'];
+  items: string[] = this.datas.itemsShow;
   alias: string = "";
   iban_alias: string = "";
 
@@ -51,7 +52,7 @@ export class TablesComponent implements OnInit {
   itemChange() {
     this.datas.setItem(this.selectedItems);
     console.log(this.selectedItems)
-    this.items = this.datas.items;
+    this.items = this.datas.itemsShow;
     this.ngOnInit();
 
   }
@@ -64,7 +65,7 @@ export class TablesComponent implements OnInit {
       this.iban_alias += text.data
     }
     console.log(this.iban_alias);
-    
+
   }
 
 
@@ -80,13 +81,14 @@ export class TablesComponent implements OnInit {
   }
 
   constructor() {
+    const js = new JsonDService();
+    js.iterate();
 
   }
 
   ngOnInit(): void {
     this.activeAccordion = ["Conti Correnti", "Portafoglio Incassi", " Libretti di risparmio",
-      "Conti Anticipi Esteri", "Conti Anticipi Esteri", " Finanziamenti"];
-    console.log(this.items)
+      "Conti Anticipi Esteri", "Libretti di risparmio", " Finanziamenti"];
     this.dropdownList = this.datas.dropdownList;
     this.selectedItems = this.dropdownList;
     this.Data_list = this.datas.Data_List;

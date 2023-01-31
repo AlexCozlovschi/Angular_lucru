@@ -50,11 +50,31 @@
               "types": [
                 {
                   "status": "ACTIVE",
-                  "type": "01",
+                  "type": "21",
                   "alias": null,
                   "is_passive_bank": false,
                   "currency": null,
                   "account_naming": "A.C. FILATURA _23",
+                  "is_default_account": null,
+                  "tax_code": "00107140055"
+                },
+                {
+                  "status": "ACTIVE",
+                  "type": "04",
+                  "alias": null,
+                  "is_passive_bank": false,
+                  "currency": null,
+                  "account_naming": "A.C. FILATURA _99",
+                  "is_default_account": null,
+                  "tax_code": "00107140055"
+                },
+                {
+                  "status": "ACTIVE",
+                  "type": "06",
+                  "alias": null,
+                  "is_passive_bank": false,
+                  "currency": null,
+                  "account_naming": "A.C. FILATURA _99",
                   "is_default_account": null,
                   "tax_code": "00107140055"
                 }
@@ -375,7 +395,7 @@
                   "alias": null,
                   "is_passive_bank": false,
                   "currency": null,
-                  "account_naming": "A.C. FILATURA NORDMSK2",
+                  "account_naming": "A.C. FILATURA NORDMSK",
                   "is_default_account": null,
                   "tax_code": "00107140055"
                 }
@@ -439,7 +459,7 @@
                   "alias": null,
                   "is_passive_bank": false,
                   "currency": null,
-                  "account_naming": "A.C. FILATURA 3NORDMSK",
+                  "account_naming": "A.C. FILATURA NORDMSK",
                   "is_default_account": null,
                   "tax_code": "00107140055"
                 }
@@ -503,7 +523,7 @@
                   "alias": null,
                   "is_passive_bank": false,
                   "currency": null,
-                  "account_naming": "A.C. FILATURA3 NORDMSK",
+                  "account_naming": "A.C. FILATURA NORDMSK",
                   "is_default_account": null,
                   "tax_code": "00107140055"
                 }
