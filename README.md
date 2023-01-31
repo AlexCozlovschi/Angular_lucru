@@ -1,3 +1,19 @@
+# Task Typescript:
+
+### Pagina profile poate fi accesată după ce tastați pe profilul vostru din navbar.
+
+![img.png](img.png)
+
+## Pagina de login
+
+### Se face redirect la pagina de login după ce se apasă pe butonul de profile din navbar, în cazul în care nu sunteți logat.
+
+![img_2.png](img_2.png)
+
+### Dacă parola este introdus ceva grșit se va afișa un mesaj de eroare.
+
+![img_4.png](img_4.png)
+
 ## Pagina cu tabelul
 
 ### Tabelul poate fi gasit după path-ul: src/app/views/base/tables

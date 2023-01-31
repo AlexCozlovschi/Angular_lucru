@@ -64,6 +64,7 @@ export class TablesComponent implements OnInit {
       this.iban_alias += text.data
     }
     console.log(this.iban_alias);
+    
   }
 
 

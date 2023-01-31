@@ -47,6 +47,7 @@ import {
 import {IconModule, IconSetService} from '@coreui/icons-angular';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {FilterService} from "./services/filter.service";
+import {ProfileComponent} from './profile/profile.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -59,7 +60,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS],
+  declarations: [AppComponent, ...APP_CONTAINERS, ProfileComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -88,7 +89,7 @@ const APP_CONTAINERS = [
     ListGroupModule,
     CardModule,
     FontAwesomeModule,
-    
+
   ],
   providers: [
     {
