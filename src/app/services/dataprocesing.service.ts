@@ -23,7 +23,7 @@ export class DataprocesingService {
   }
 
   private _categories: string[] = ["Conti Correnti", "Portafoglio Incassi", "Libretti di risparmio",
-    "Conti Anticipi Esteri", "Finаnziamenti"];
+    "Conti Anticipi Esteri", "Finanziamenti"];
   private _Data_List: Map<any, any>[];
   private _dropdownList: { item_id: number; item_text: string }[];
   private _dropdownTipology: { item_id: number; item_text: string }[] = [];
@@ -158,6 +158,7 @@ export class DataprocesingService {
       this._itemsShow.push(value1.item_text)
     }
   }
+
 
   constructor() {
     this._Data_List = [];

@@ -3,7 +3,7 @@ import {faStar} from '@fortawesome/free-solid-svg-icons';
 import {faChevronDown} from "@fortawesome/free-solid-svg-icons";
 import {FilterService} from "../../../services/filter.service";
 import {JsonDService} from "../../../services/json-d.service";
-
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms'
 import {DataprocesingService} from "../../../services/dataprocesing.service";
 
 @Component({
@@ -38,18 +38,26 @@ export class TablesComponent implements OnInit {
 
   tipologiFilter() {
     this.datas.setData(this.selectedTipology);
+    this.data = this.datas.data;
     this.ngOnInit();
   }
 
 
   itemChange() {
     this.datas.setItem(this.selectedItems);
-    console.log(this.selectedItems)
     this.items = this.datas.itemsShow;
     this.ngOnInit();
 
   }
 
+  itemsChange() {
+    this.datas.setItem(this.selectedItems);
+    console.log(this.selectedItems)
+    console.log(this.datas.itemsShow)
+    this.items = this.datas.itemsShow;
+    this.ngOnInit();
+
+  }
 
   textFilter(text: any) {
     if (text.data == null) {
@@ -61,9 +69,7 @@ export class TablesComponent implements OnInit {
 
   }
 
-
   activeAccordion: any;
-
 
   toggleAccordion(name: any) {
     if (this.activeAccordion.includes(name)) {
@@ -73,21 +79,23 @@ export class TablesComponent implements OnInit {
     }
   }
 
+  formGroup = new UntypedFormGroup({
+    multiSelect: new UntypedFormControl(['Angular', 'Bootstrap'])
+  });
+
   constructor() {
-    const js = new JsonDService();
-    js.iterate();
+
 
   }
 
   ngOnInit(): void {
+    this.data = this.datas.data;
+    this.items = this.datas.itemsShow;
     this.activeAccordion = this.datas.categories;
     this.dropdownList = this.datas.dropdownList;
     this.selectedItems = this.dropdownList;
     this.Data_list = this.datas.Data_List;
     this.data = this.datas.data;
     this.dropdownTipology = this.datas.dropdownTipology;
-
   }
-
-
 }

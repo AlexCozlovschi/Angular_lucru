@@ -8,23 +8,22 @@
       </c-card-header>
       <c-card-body>
         <c-row>
-          <c-col xs="6">
 
+          <c-col xs="6">
             <ng-multiselect-dropdown
               [placeholder]="'Select Items'"
               [settings]="dropdownSettings"
               [data]="dropdownList"
               [(ngModel)]="selectedItems"
               (onSelect)="itemChange()"
-              (onSelectAll)="itemChange()"
-              (onDeSelectAll)="itemChange()"
+              (onSelectAll)="itemsChange()"
+              (onDeSelectAll)="itemsChange()"
               (onDeSelect)="itemChange()"
-
             >
             </ng-multiselect-dropdown>
+
           </c-col>
           <c-col xs="6">
-
             <ng-multiselect-dropdown
               [placeholder]="'Select Intestazione'"
               [settings]="dropdownSettings"
@@ -86,6 +85,7 @@
               <td>{{ item.get("alias") }}</td>
               <td>{{ item.get("devisa") }}</td>
             </tr>
+
           </ng-container>
           </tbody>
         </table>
