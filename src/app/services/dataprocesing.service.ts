@@ -6,6 +6,14 @@ import all from "../views/base/tables/accounts.json";
   providedIn: 'root'
 })
 export class DataprocesingService {
+  get categories(): string[] {
+    return this._categories;
+  }
+
+  set categories(value: string[]) {
+    this._categories = value;
+  }
+
   get itemsShow(): string[] {
     return this._itemsShow;
   }
@@ -14,9 +22,11 @@ export class DataprocesingService {
     this._itemsShow = value;
   }
 
+  private _categories: string[] = ["Conti Correnti", "Portafoglio Incassi", " Libretti di risparmio",
+    "Conti Anticipi Esteri", "Libretti di risparmio", " Finanziamenti"];
   private _Data_List: Map<any, any>[];
   private _dropdownList: { item_id: number; item_text: string }[];
-  private _dropdownTipology: { item_id: number; item_text: string }[];
+  private _dropdownTipology: { item_id: number; item_text: string }[] = [];
   private _Iban: string[];
   private _Intestazione: string[];
   private _Azienda: string[];
@@ -156,18 +166,22 @@ export class DataprocesingService {
     this._dropdownList = [];
     this._data = [];
     this._itemsShow = this._Intestazione;
-    this._dropdownTipology = [
-      {item_id: 1, item_text: 'Conti Correnti'},
-      {item_id: 2, item_text: 'Portafoglio Incassi'},
-      {item_id: 3, item_text: 'Conti Anticipi Esteri'},
-      {item_id: 4, item_text: 'Libretti di risparmio'},
-      {item_id: 5, item_text: 'Finanziamenti'}];
+    this.createTipology(this._categories);
     this.get_datas_from_json()
     //console.log(this._Intestazione)
     this.dropdownListSet(this._Intestazione);
     this.setData(this._dropdownTipology);
   }
-  
+
+  createTipology(tipology: string[]): void {
+    let aux = 1
+    for (const value of tipology) {
+      this._dropdownTipology.push({'item_id': aux, 'item_text': value})
+      aux++
+    }
+  }
+
+
   get dropdownTipology(): { item_id: number; item_text: string }[] {
     return this._dropdownTipology;
   }

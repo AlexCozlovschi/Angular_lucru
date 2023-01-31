@@ -87,8 +87,7 @@ export class TablesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activeAccordion = ["Conti Correnti", "Portafoglio Incassi", " Libretti di risparmio",
-      "Conti Anticipi Esteri", "Libretti di risparmio", " Finanziamenti"];
+    this.activeAccordion = this.datas.categories;
     this.dropdownList = this.datas.dropdownList;
     this.selectedItems = this.dropdownList;
     this.Data_list = this.datas.Data_List;
