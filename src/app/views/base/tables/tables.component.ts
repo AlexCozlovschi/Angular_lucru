@@ -14,18 +14,11 @@ import {DataprocesingService} from "../../../services/dataprocesing.service";
 export class TablesComponent implements OnInit {
   datas = new DataprocesingService();
   data: string[] = this.datas.data;
-  Data_list: Map<any, any>[] = this.datas.Data_List;
-  dropdownTipology = [{item_id: 1, item_text: "test"}];
-  dropdownList = [{item_id: 1, item_text: "test"}];
-  selectedTipology = [
-    {item_id: 1, item_text: 'Conti Correnti'},
-    {item_id: 2, item_text: 'Portafoglio Incassi'},
-    {item_id: 3, item_text: 'Conti Anticipi Esteri'},
-    {item_id: 4, item_text: 'Libretti di risparmio'},
-    {item_id: 5, item_text: 'Finanziamenti'}];
-  selectedItems = [{item_id: 1, item_text: 'A.C. FILATURA _23'},
-    {item_id: 2, item_text: "A.C. FILATURA NORDMSK"},
-    {item_id: 3, item_text: "A.C. FILATURA2 NORDMSK"},];
+  Data_list = this.datas.Data_List;
+  dropdownTipology = this.datas.dropdownTipology;
+  dropdownList = this.datas.dropdownList;
+  selectedItems = this.dropdownList;
+  selectedTipology = this.datas.dropdownTipology;
   items: string[] = this.datas.itemsShow;
   alias: string = "";
   iban_alias: string = "";

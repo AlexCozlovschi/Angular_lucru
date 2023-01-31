@@ -22,8 +22,8 @@ export class DataprocesingService {
     this._itemsShow = value;
   }
 
-  private _categories: string[] = ["Conti Correnti", "Portafoglio Incassi", " Libretti di risparmio",
-    "Conti Anticipi Esteri", "Libretti di risparmio", " Finanziamenti"];
+  private _categories: string[] = ["Conti Correnti", "Portafoglio Incassi", "Libretti di risparmio",
+    "Conti Anticipi Esteri", "Finаnziamenti"];
   private _Data_List: Map<any, any>[];
   private _dropdownList: { item_id: number; item_text: string }[];
   private _dropdownTipology: { item_id: number; item_text: string }[] = [];
@@ -82,6 +82,7 @@ export class DataprocesingService {
             // Prepare data for filter
             if (!this._Intestazione.includes(Intestazione)) {
               this._Intestazione.push(Intestazione);
+
             }
 
             if (!this._Azienda.includes(Azienda)) {
